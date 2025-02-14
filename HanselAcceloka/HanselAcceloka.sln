@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HanselAcceloka", "HanselAcceloka.csproj", "{E2BBAF04-C81D-4B33-A32D-B2C87638C7AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{67CF0C9F-B361-44BF-A5A3-13A5DFAAF750}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HanselAcceloka.Entities", "..\HanselAcceloka.Entities\HanselAcceloka.Entities.csproj", "{9503BADF-9C9A-495E-BC38-8257A33189D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2BBAF04-C81D-4B33-A32D-B2C87638C7AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2BBAF04-C81D-4B33-A32D-B2C87638C7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2BBAF04-C81D-4B33-A32D-B2C87638C7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2BBAF04-C81D-4B33-A32D-B2C87638C7AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9503BADF-9C9A-495E-BC38-8257A33189D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9503BADF-9C9A-495E-BC38-8257A33189D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9503BADF-9C9A-495E-BC38-8257A33189D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9503BADF-9C9A-495E-BC38-8257A33189D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

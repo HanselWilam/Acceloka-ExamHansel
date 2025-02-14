@@ -1,0 +1,15 @@
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\bin\Debug\net8.0\appsettings.Development.json
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\bin\Debug\net8.0\HanselAcceloka.Entities.deps.json
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\bin\Debug\net8.0\HanselAcceloka.Entities.runtimeconfig.json
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\bin\Debug\net8.0\HanselAcceloka.Entities.dll
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\bin\Debug\net8.0\HanselAcceloka.Entities.pdb
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.csproj.AssemblyReference.cache
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.AssemblyInfoInputs.cache
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.AssemblyInfo.cs
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.csproj.CoreCompileInputs.cache
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.dll
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\refint\HanselAcceloka.Entities.dll
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.pdb
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\HanselAcceloka.Entities.genruntimeconfig.cache
+D:\WorkingSpace\Repository\HanselAcceloka.Entities\obj\Debug\net8.0\ref\HanselAcceloka.Entities.dll
