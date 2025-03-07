@@ -1,0 +1,1062 @@
+2025-02-14 15:16:42.410 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 15:16:42.516 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 15:16:42.517 +07:00 [INF] Hosting environment: Development
+2025-02-14 15:16:42.517 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 15:16:43.528 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 15:16:44.204 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 688.3234ms
+2025-02-14 15:16:49.219 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 15:16:49.220 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 15:16:49.224 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 5.2117ms
+2025-02-14 15:16:49.259 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 38.9645ms
+2025-02-14 15:16:49.437 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 15:16:49.455 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.242ms
+2025-02-14 15:25:32.334 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 15:25:32.445 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 15:25:32.446 +07:00 [INF] Hosting environment: Development
+2025-02-14 15:25:32.446 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 15:25:33.971 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 15:25:34.538 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 583.2417ms
+2025-02-14 15:25:38.746 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 15:25:38.746 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 15:25:38.750 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 4.0268ms
+2025-02-14 15:25:38.785 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 39.8641ms
+2025-02-14 15:25:38.898 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 15:25:38.920 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.0347ms
+2025-02-14 15:25:42.803 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - null null
+2025-02-14 15:25:42.812 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 15:25:42.834 +07:00 [INF] Route matched with {action = "Get", controller = "Ticket"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller HanselAcceloka.Controllers.TicketController (HanselAcceloka).
+2025-02-14 15:25:42.897 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 15:25:44.050 +07:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM ticket AS t
+2025-02-14 15:25:44.233 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t0.ticket_code AS "TicketCode", t0.ticket_name AS "TicketName", c.category_name AS "CategoryName", t0.price AS "Price", t0.quota AS "Quota", t0.event_date::timestamp AS "EventDate"
+FROM (
+    SELECT t.ticket_code, t.category_id, t.event_date, t.price, t.quota, t.ticket_name
+    FROM ticket AS t
+    ORDER BY t.ticket_code
+    LIMIT @__p_1 OFFSET @__p_0
+) AS t0
+INNER JOIN category AS c ON t0.category_id = c.category_id
+ORDER BY t0.ticket_code
+2025-02-14 15:25:44.258 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.Collections.Generic.List`1[[HanselAcceloka.Models.TicketModel, HanselAcceloka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-14 15:25:44.280 +07:00 [INF] Executed action HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka) in 1443.5103ms
+2025-02-14 15:25:44.282 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 15:25:44.285 +07:00 [ERR] HTTP GET /api/v1/get-available-ticket responded 500 in 1474.2890 ms
+System.InvalidOperationException: The JSON property name for 'HanselAcceloka.Models.TicketModel.eventDate' collides with another property.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_SerializerPropertyNameConflict(Type type, String propertyName)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.JsonPropertyInfoList.AddPropertyWithConflictResolution(JsonPropertyInfo jsonPropertyInfo, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.AddMember(JsonTypeInfo typeInfo, Type typeToConvert, MemberInfo memberInfo, NullabilityInfoContext nullabilityCtx, Boolean shouldCheckForRequiredKeyword, Boolean hasJsonIncludeAttribute, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.AddMembersDeclaredBySuperType(JsonTypeInfo typeInfo, Type currentType, NullabilityInfoContext nullabilityCtx, Boolean constructorHasSetsRequiredMembersAttribute, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.PopulateProperties(JsonTypeInfo typeInfo, NullabilityInfoContext nullabilityCtx)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.CreateTypeInfoCore(Type type, JsonConverter converter, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.CreateJsonTypeInfo(Type type, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.GetTypeInfo(Type type, JsonSerializerOptions options)
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(Type type)
+   at System.Text.Json.JsonSerializerOptions.CachingContext.CreateCacheEntry(Type type, CachingContext context)
+--- End of stack trace from previous location ---
+   at System.Text.Json.JsonSerializerOptions.CachingContext.CacheEntry.GetResult()
+   at System.Text.Json.JsonSerializerOptions.CachingContext.GetOrAddTypeInfo(Type type, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.EnsureConfigured()
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo.Configure()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.ConfigureProperties()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.EnsureConfigured()
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfo(Type type)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-02-14 15:25:44.327 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The JSON property name for 'HanselAcceloka.Models.TicketModel.eventDate' collides with another property.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_SerializerPropertyNameConflict(Type type, String propertyName)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.JsonPropertyInfoList.AddPropertyWithConflictResolution(JsonPropertyInfo jsonPropertyInfo, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.AddMember(JsonTypeInfo typeInfo, Type typeToConvert, MemberInfo memberInfo, NullabilityInfoContext nullabilityCtx, Boolean shouldCheckForRequiredKeyword, Boolean hasJsonIncludeAttribute, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.AddMembersDeclaredBySuperType(JsonTypeInfo typeInfo, Type currentType, NullabilityInfoContext nullabilityCtx, Boolean constructorHasSetsRequiredMembersAttribute, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.PopulateProperties(JsonTypeInfo typeInfo, NullabilityInfoContext nullabilityCtx)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.CreateTypeInfoCore(Type type, JsonConverter converter, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.CreateJsonTypeInfo(Type type, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.GetTypeInfo(Type type, JsonSerializerOptions options)
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(Type type)
+   at System.Text.Json.JsonSerializerOptions.CachingContext.CreateCacheEntry(Type type, CachingContext context)
+--- End of stack trace from previous location ---
+   at System.Text.Json.JsonSerializerOptions.CachingContext.CacheEntry.GetResult()
+   at System.Text.Json.JsonSerializerOptions.CachingContext.GetOrAddTypeInfo(Type type, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.EnsureConfigured()
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo.Configure()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.ConfigureProperties()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.EnsureConfigured()
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfo(Type type)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-14 15:25:44.343 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - 500 null text/plain; charset=utf-8 1540.0433ms
+2025-02-14 15:26:15.528 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 15:26:15.662 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 15:26:15.662 +07:00 [INF] Hosting environment: Development
+2025-02-14 15:26:15.662 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 15:26:16.716 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 15:26:17.111 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 408.0685ms
+2025-02-14 15:26:17.285 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 15:26:17.289 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 6.6842ms
+2025-02-14 15:26:17.308 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 15:26:17.362 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 53.8627ms
+2025-02-14 15:26:17.658 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 15:26:17.678 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.0501ms
+2025-02-14 15:26:26.917 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - null null
+2025-02-14 15:26:26.926 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 15:26:26.948 +07:00 [INF] Route matched with {action = "Get", controller = "Ticket"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller HanselAcceloka.Controllers.TicketController (HanselAcceloka).
+2025-02-14 15:26:27.009 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 15:26:28.063 +07:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM ticket AS t
+2025-02-14 15:26:28.202 +07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t0.ticket_code AS "TicketCode", t0.ticket_name AS "TicketName", c.category_name AS "CategoryName", t0.price AS "Price", t0.quota AS "Quota", t0.event_date::timestamp AS "EventDate"
+FROM (
+    SELECT t.ticket_code, t.category_id, t.event_date, t.price, t.quota, t.ticket_name
+    FROM ticket AS t
+    ORDER BY t.ticket_code
+    LIMIT @__p_1 OFFSET @__p_0
+) AS t0
+INNER JOIN category AS c ON t0.category_id = c.category_id
+ORDER BY t0.ticket_code
+2025-02-14 15:26:28.221 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[System.Collections.Generic.List`1[[HanselAcceloka.Models.TicketModel, HanselAcceloka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-14 15:26:28.235 +07:00 [INF] Executed action HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka) in 1284.354ms
+2025-02-14 15:26:28.236 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 15:26:28.238 +07:00 [INF] HTTP GET /api/v1/get-available-ticket responded 200 in 1314.6964 ms
+2025-02-14 15:26:28.246 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - 200 null application/json; charset=utf-8 1328.8188ms
+2025-02-14 15:32:54.702 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/book-ticket - application/json 97
+2025-02-14 15:32:54.703 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.BookTicketController.BookTicket (HanselAcceloka)'
+2025-02-14 15:32:54.713 +07:00 [INF] Route matched with {action = "BookTicket", controller = "BookTicket"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BookTicket(HanselAcceloka.Models.Requests.BookTicketRequest) on controller HanselAcceloka.Controllers.BookTicketController (HanselAcceloka).
+2025-02-14 15:32:54.886 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.user_id = @__request_UserId_0)
+2025-02-14 15:32:54.993 +07:00 [INF] Executed DbCommand (50ms) [Parameters=[@__ticketCodes_0='?' (DbType = Object)], CommandType='"Text"', CommandTimeout='30']
+SELECT t.ticket_code, t.category_id, t.event_date, t.price, t.quota, t.ticket_name, c.category_id, c.category_name
+FROM ticket AS t
+INNER JOIN category AS c ON t.category_id = c.category_id
+WHERE t.ticket_code = ANY (@__ticketCodes_0)
+2025-02-14 15:32:55.172 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO bookedticket (booked_at, user_id)
+VALUES (@p0, @p1)
+RETURNING booked_ticket_id;
+2025-02-14 15:32:55.226 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?', @p4='?', @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO bookedticketdetail (booked_ticket_id, quantity, ticket_code)
+VALUES (@p0, @p1, @p2)
+RETURNING booked_ticket_detail_id;
+UPDATE ticket SET quota = @p3
+WHERE ticket_code = @p4;
+2025-02-14 15:32:55.243 +07:00 [INF] Executing OkObjectResult, writing value of type 'HanselAcceloka.Models.Responses.BookTicketResponse'.
+2025-02-14 15:32:55.251 +07:00 [INF] Executed action HanselAcceloka.Controllers.BookTicketController.BookTicket (HanselAcceloka) in 537.02ms
+2025-02-14 15:32:55.251 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.BookTicketController.BookTicket (HanselAcceloka)'
+2025-02-14 15:32:55.251 +07:00 [INF] HTTP POST /api/v1/book-ticket responded 200 in 547.7407 ms
+2025-02-14 15:32:55.251 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/book-ticket - 200 null application/json; charset=utf-8 549.7722ms
+2025-02-14 15:33:41.369 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/api/v1/get-booked-ticket/5 - null null
+2025-02-14 15:33:41.404 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.BookedTicketController.GetBookedTicket (HanselAcceloka)'
+2025-02-14 15:33:41.409 +07:00 [INF] Route matched with {action = "GetBookedTicket", controller = "BookedTicket"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBookedTicket(Int32) on controller HanselAcceloka.Controllers.BookedTicketController (HanselAcceloka).
+2025-02-14 15:33:41.496 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__bookedTicketId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t.booked_ticket_id, t.booked_at, t.user_id, t0.booked_ticket_detail_id, t0.booked_ticket_id, t0.quantity, t0.ticket_code, t0.ticket_code0, t0.category_id, t0.event_date, t0.price, t0.quota, t0.ticket_name, t0.category_id0, t0.category_name
+FROM (
+    SELECT b.booked_ticket_id, b.booked_at, b.user_id
+    FROM bookedticket AS b
+    WHERE b.booked_ticket_id = @__bookedTicketId_0
+    LIMIT 1
+) AS t
+LEFT JOIN (
+    SELECT b0.booked_ticket_detail_id, b0.booked_ticket_id, b0.quantity, b0.ticket_code, t1.ticket_code AS ticket_code0, t1.category_id, t1.event_date, t1.price, t1.quota, t1.ticket_name, c.category_id AS category_id0, c.category_name
+    FROM bookedticketdetail AS b0
+    INNER JOIN ticket AS t1 ON b0.ticket_code = t1.ticket_code
+    INNER JOIN category AS c ON t1.category_id = c.category_id
+) AS t0 ON t.booked_ticket_id = t0.booked_ticket_id
+ORDER BY t.booked_ticket_id, t0.booked_ticket_detail_id, t0.ticket_code0
+2025-02-14 15:33:41.509 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType1`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], HanselAcceloka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], HanselAcceloka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-14 15:33:41.512 +07:00 [INF] Executed action HanselAcceloka.Controllers.BookedTicketController.GetBookedTicket (HanselAcceloka) in 103.5907ms
+2025-02-14 15:33:41.512 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.BookedTicketController.GetBookedTicket (HanselAcceloka)'
+2025-02-14 15:33:41.512 +07:00 [INF] HTTP GET /api/v1/get-booked-ticket/5 responded 200 in 108.5848 ms
+2025-02-14 15:33:41.513 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/api/v1/get-booked-ticket/5 - 200 null application/json; charset=utf-8 143.6506ms
+2025-02-14 15:58:55.280 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 15:58:55.503 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 15:58:55.504 +07:00 [INF] Hosting environment: Development
+2025-02-14 15:58:55.504 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 15:58:56.961 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 15:58:57.521 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 568.9545ms
+2025-02-14 15:59:02.585 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 15:59:02.585 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 15:59:02.588 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 3.4172ms
+2025-02-14 15:59:02.626 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.529ms
+2025-02-14 15:59:02.723 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 15:59:02.742 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.3564ms
+2025-02-14 15:59:30.740 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users - application/json 82
+2025-02-14 15:59:30.749 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 15:59:30.778 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 15:59:30.786 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 4.4947ms
+2025-02-14 15:59:30.788 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 15:59:30.791 +07:00 [ERR] HTTP POST /api/v1/users responded 500 in 43.1151 ms
+System.InvalidOperationException: Unable to resolve service for type 'HanselAcceloka.Services.UserService' while attempting to activate 'HanselAcceloka.Controllers.UserController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-02-14 15:59:30.830 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'HanselAcceloka.Services.UserService' while attempting to activate 'HanselAcceloka.Controllers.UserController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-14 15:59:30.836 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users - 500 null text/plain; charset=utf-8 95.7814ms
+2025-02-14 15:59:34.850 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users - application/json 82
+2025-02-14 15:59:34.852 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 15:59:34.852 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 15:59:34.853 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 0.6085ms
+2025-02-14 15:59:34.853 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 15:59:34.853 +07:00 [ERR] HTTP POST /api/v1/users responded 500 in 1.9590 ms
+System.InvalidOperationException: Unable to resolve service for type 'HanselAcceloka.Services.UserService' while attempting to activate 'HanselAcceloka.Controllers.UserController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-02-14 15:59:34.855 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'HanselAcceloka.Services.UserService' while attempting to activate 'HanselAcceloka.Controllers.UserController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-14 15:59:34.856 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users - 500 null text/plain; charset=utf-8 5.9494ms
+2025-02-14 16:01:06.881 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:01:07.003 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:01:07.003 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:01:07.003 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:01:08.213 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:01:08.578 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 376.8214ms
+2025-02-14 16:01:08.675 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:01:08.675 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:01:08.678 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 4.2911ms
+2025-02-14 16:01:08.721 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.9404ms
+2025-02-14 16:01:08.954 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:01:08.976 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.9162ms
+2025-02-14 16:03:00.216 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - null null
+2025-02-14 16:03:00.225 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 16:03:00.247 +07:00 [INF] Route matched with {action = "Get", controller = "Ticket"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller HanselAcceloka.Controllers.TicketController (HanselAcceloka).
+2025-02-14 16:03:00.331 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:03:01.727 +07:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM ticket AS t
+2025-02-14 16:03:01.882 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t0.ticket_code AS "TicketCode", t0.ticket_name AS "TicketName", c.category_name AS "CategoryName", t0.price AS "Price", t0.quota AS "Quota", t0.event_date::timestamp AS "EventDate"
+FROM (
+    SELECT t.ticket_code, t.category_id, t.event_date, t.price, t.quota, t.ticket_name
+    FROM ticket AS t
+    ORDER BY t.ticket_code
+    LIMIT @__p_1 OFFSET @__p_0
+) AS t0
+INNER JOIN category AS c ON t0.category_id = c.category_id
+ORDER BY t0.ticket_code
+2025-02-14 16:03:01.911 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType6`2[[System.Collections.Generic.List`1[[HanselAcceloka.Models.TicketModel, HanselAcceloka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-14 16:03:01.928 +07:00 [INF] Executed action HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka) in 1678.3298ms
+2025-02-14 16:03:01.929 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 16:03:01.931 +07:00 [INF] HTTP GET /api/v1/get-available-ticket responded 200 in 1708.0227 ms
+2025-02-14 16:03:01.939 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - 200 null application/json; charset=utf-8 1722.7399ms
+2025-02-14 16:04:04.744 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users - application/json 87
+2025-02-14 16:04:04.746 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:04:04.757 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:04:04.845 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:04:05.058 +07:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:04:05.091 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'HanselAcceloka.Entities.AccelokaContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-14 16:04:05.142 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-02-14 16:04:05.163 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 405.2301ms
+2025-02-14 16:04:05.163 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:04:05.163 +07:00 [ERR] HTTP POST /api/v1/users responded 500 in 416.9334 ms
+2025-02-14 16:04:05.163 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users - 500 null application/problem+json; charset=utf-8 419.5896ms
+2025-02-14 16:17:08.975 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:17:09.084 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:17:09.084 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:17:09.084 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:17:10.768 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:17:11.144 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 392.8164ms
+2025-02-14 16:17:11.253 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:17:11.253 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:17:11.257 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 4.9852ms
+2025-02-14 16:17:11.333 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 81.3747ms
+2025-02-14 16:17:12.258 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:17:12.274 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.2646ms
+2025-02-14 16:17:43.022 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users - application/json 84
+2025-02-14 16:17:43.031 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:17:43.056 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:17:43.125 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:17:44.349 +07:00 [INF] Executed DbCommand (58ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:17:44.531 +07:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:17:44.562 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'HanselAcceloka.Entities.AccelokaContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-14 16:17:44.660 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-02-14 16:17:44.691 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 1625.1031ms
+2025-02-14 16:17:44.692 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:17:44.694 +07:00 [ERR] HTTP POST /api/v1/users responded 500 in 1665.3521 ms
+2025-02-14 16:17:44.702 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users - 500 null application/problem+json; charset=utf-8 1679.691ms
+2025-02-14 16:20:26.480 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:20:26.580 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:20:26.580 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:20:26.580 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:20:28.058 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:20:28.374 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 326.5574ms
+2025-02-14 16:20:28.665 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:20:28.665 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:20:28.668 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 3.6839ms
+2025-02-14 16:20:28.722 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.9331ms
+2025-02-14 16:20:33.562 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:20:33.594 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.5812ms
+2025-02-14 16:20:39.817 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users - application/json 71
+2025-02-14 16:20:39.827 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:20:39.853 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:20:39.912 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:20:41.138 +07:00 [INF] Executed DbCommand (51ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:20:41.312 +07:00 [ERR] Failed executing DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:20:41.339 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'HanselAcceloka.Entities.AccelokaContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-14 16:20:41.427 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-02-14 16:20:41.446 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 1589.6418ms
+2025-02-14 16:20:41.446 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:20:41.448 +07:00 [ERR] HTTP POST /api/v1/users responded 500 in 1624.4410 ms
+2025-02-14 16:20:41.455 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users - 500 null application/problem+json; charset=utf-8 1638.3262ms
+2025-02-14 16:21:05.166 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:21:05.175 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 9.459ms
+2025-02-14 16:21:05.209 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:21:05.214 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:21:05.214 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 0.3662ms
+2025-02-14 16:21:05.229 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.8544ms
+2025-02-14 16:21:05.763 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:21:05.771 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.5245ms
+2025-02-14 16:21:10.935 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users - application/json 71
+2025-02-14 16:21:10.937 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:21:10.937 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:21:10.980 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:21:10.987 +07:00 [ERR] Failed executing DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:21:10.990 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'HanselAcceloka.Entities.AccelokaContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-14 16:21:11.043 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-02-14 16:21:11.043 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 106.3915ms
+2025-02-14 16:21:11.044 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:21:11.044 +07:00 [ERR] HTTP POST /api/v1/users responded 500 in 107.0612 ms
+2025-02-14 16:21:11.044 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users - 500 null application/problem+json; charset=utf-8 108.9824ms
+2025-02-14 16:24:15.679 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:24:15.814 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:24:15.815 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:24:15.815 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:24:17.264 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:24:17.536 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 281.6627ms
+2025-02-14 16:24:21.989 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:24:21.989 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:24:21.992 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 3.9961ms
+2025-02-14 16:24:22.059 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 71.5592ms
+2025-02-14 16:24:22.162 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:24:22.184 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.8293ms
+2025-02-14 16:24:41.088 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users - application/json 81
+2025-02-14 16:24:41.097 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:24:41.125 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:24:41.199 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:24:42.381 +07:00 [INF] Executed DbCommand (57ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:24:42.582 +07:00 [ERR] Failed executing DbCommand (8ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:24:42.608 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'HanselAcceloka.Entities.AccelokaContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-14 16:24:42.664 +07:00 [ERR] Database error saat menyimpan user.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at HanselAcceloka.Services.UserService.AddUserAsync(UserRequest userRequest) in D:\WorkingSpace\Repository\HanselAcceloka\Services\UserService.cs:line 44
+2025-02-14 16:30:03.902 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:30:04.005 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:30:04.005 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:30:04.005 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:30:05.045 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:30:05.453 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 420.7798ms
+2025-02-14 16:30:05.706 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:30:05.709 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 3.7517ms
+2025-02-14 16:30:05.710 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:30:05.812 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 101.4364ms
+2025-02-14 16:30:10.153 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:30:10.171 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.2152ms
+2025-02-14 16:30:31.663 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users/users - application/json 78
+2025-02-14 16:30:31.675 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:30:31.703 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:30:31.777 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:30:32.947 +07:00 [INF] Executed DbCommand (51ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:30:33.129 +07:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:30:33.157 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'HanselAcceloka.Entities.AccelokaContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-14 16:30:33.213 +07:00 [ERR] Database error saat menyimpan user.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at HanselAcceloka.Services.UserService.AddUserAsync(UserRequest userRequest) in D:\WorkingSpace\Repository\HanselAcceloka\Services\UserService.cs:line 44
+2025-02-14 16:30:33.225 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-02-14 16:30:33.244 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 1538.2061ms
+2025-02-14 16:30:33.244 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:30:33.246 +07:00 [ERR] HTTP POST /api/v1/users/users responded 500 in 1575.6356 ms
+2025-02-14 16:30:33.254 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users/users - 500 null application/problem+json; charset=utf-8 1590.7811ms
+2025-02-14 16:34:34.128 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:34:34.247 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:34:34.247 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:34:34.247 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:34:35.696 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:34:36.019 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 335.4195ms
+2025-02-14 16:34:36.292 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:34:36.292 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:34:36.297 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 5.648ms
+2025-02-14 16:34:36.461 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 170.0779ms
+2025-02-14 16:34:42.741 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:34:42.758 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.7695ms
+2025-02-14 16:34:49.640 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users/users - application/json 71
+2025-02-14 16:34:49.649 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:34:49.677 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:34:49.737 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:34:50.997 +07:00 [INF] Executed DbCommand (55ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:34:51.195 +07:00 [ERR] Failed executing DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:34:51.227 +07:00 [ERR] An exception occurred in the database while saving changes for context type 'HanselAcceloka.Entities.AccelokaContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-02-14 16:34:51.304 +07:00 [ERR] Database error: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=UTC to PostgreSQL type 'timestamp without time zone', consider using 'timestamp with time zone'. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at HanselAcceloka.Services.UserService.AddUserAsync(UserRequest userRequest) in D:\WorkingSpace\Repository\HanselAcceloka\Services\UserService.cs:line 41
+2025-02-14 16:34:51.381 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-02-14 16:34:51.402 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 1722.5796ms
+2025-02-14 16:34:51.403 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:34:51.405 +07:00 [ERR] HTTP POST /api/v1/users/users responded 500 in 1758.6737 ms
+2025-02-14 16:34:51.413 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users/users - 500 null application/problem+json; charset=utf-8 1773.5468ms
+2025-02-14 16:38:30.694 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:38:30.792 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:38:30.793 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:38:30.793 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:38:32.469 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:38:32.827 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 370.1694ms
+2025-02-14 16:38:32.941 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:38:32.944 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:38:32.954 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 9.3156ms
+2025-02-14 16:38:32.985 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.2459ms
+2025-02-14 16:38:33.178 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:38:33.199 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.5519ms
+2025-02-14 16:38:38.176 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users/users - application/json 71
+2025-02-14 16:38:38.186 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:38:38.224 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:38:38.310 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:38:39.680 +07:00 [INF] Executed DbCommand (55ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:38:39.878 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:38:39.900 +07:00 [INF] User 1 berhasil ditambahkan.
+2025-02-14 16:38:39.908 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'HanselAcceloka.Models.UserResponse'.
+2025-02-14 16:38:39.953 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 1725.098ms
+2025-02-14 16:38:39.953 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:38:39.955 +07:00 [INF] HTTP POST /api/v1/users/users responded 201 in 1772.4580 ms
+2025-02-14 16:38:39.965 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users/users - 201 null application/json; charset=utf-8 1789.5026ms
+2025-02-14 16:46:44.333 +07:00 [INF] Now listening on: http://localhost:5105
+2025-02-14 16:46:44.440 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-14 16:46:44.440 +07:00 [INF] Hosting environment: Development
+2025-02-14 16:46:44.440 +07:00 [INF] Content root path: D:\WorkingSpace\Repository\HanselAcceloka
+2025-02-14 16:46:45.462 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2025-02-14 16:46:45.776 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 200 null text/html;charset=utf-8 324.5497ms
+2025-02-14 16:46:46.129 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-14 16:46:46.130 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/_vs/browserLink - null null
+2025-02-14 16:46:46.132 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 3.7483ms
+2025-02-14 16:46:46.180 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.6473ms
+2025-02-14 16:46:50.806 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2025-02-14 16:46:50.832 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.0509ms
+2025-02-14 16:47:15.083 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5105/api/v1/users/users - application/json 81
+2025-02-14 16:47:15.093 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:47:15.120 +07:00 [INF] Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(HanselAcceloka.Models.UserRequest) on controller HanselAcceloka.Controllers.UserController (HanselAcceloka).
+2025-02-14 16:47:15.200 +07:00 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Consider removing the 'AddEntityFramework*' call, as in most cases it's not needed and may cause conflicts with other products and services registered in the same service provider.
+2025-02-14 16:47:16.361 +07:00 [INF] Executed DbCommand (54ms) [Parameters=[@__userRequest_Email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u.email = @__userRequest_Email_0)
+2025-02-14 16:47:16.536 +07:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO users (created_at, email, password_hash, username)
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING user_id;
+2025-02-14 16:47:16.558 +07:00 [INF] User 2 berhasil ditambahkan.
+2025-02-14 16:47:16.566 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'HanselAcceloka.Models.UserResponse'.
+2025-02-14 16:47:16.590 +07:00 [INF] Executed action HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka) in 1466.687ms
+2025-02-14 16:47:16.590 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.UserController.AddUser (HanselAcceloka)'
+2025-02-14 16:47:16.592 +07:00 [INF] HTTP POST /api/v1/users/users responded 201 in 1501.9186 ms
+2025-02-14 16:47:16.600 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5105/api/v1/users/users - 201 null application/json; charset=utf-8 1516.9729ms
+2025-02-14 16:47:22.869 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - null null
+2025-02-14 16:47:22.871 +07:00 [INF] Executing endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 16:47:22.875 +07:00 [INF] Route matched with {action = "Get", controller = "Ticket"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller HanselAcceloka.Controllers.TicketController (HanselAcceloka).
+2025-02-14 16:47:22.938 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM ticket AS t
+2025-02-14 16:47:23.018 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t0.ticket_code AS "TicketCode", t0.ticket_name AS "TicketName", c.category_name AS "CategoryName", t0.price AS "Price", t0.quota AS "Quota", t0.event_date::timestamp AS "EventDate"
+FROM (
+    SELECT t.ticket_code, t.category_id, t.event_date, t.price, t.quota, t.ticket_name
+    FROM ticket AS t
+    ORDER BY t.ticket_code
+    LIMIT @__p_1 OFFSET @__p_0
+) AS t0
+INNER JOIN category AS c ON t0.category_id = c.category_id
+ORDER BY t0.ticket_code
+2025-02-14 16:47:23.026 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType6`2[[System.Collections.Generic.List`1[[HanselAcceloka.Models.TicketModel, HanselAcceloka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-14 16:47:23.035 +07:00 [INF] Executed action HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka) in 159.4328ms
+2025-02-14 16:47:23.035 +07:00 [INF] Executed endpoint 'HanselAcceloka.Controllers.TicketController.Get (HanselAcceloka)'
+2025-02-14 16:47:23.035 +07:00 [INF] HTTP GET /api/v1/get-available-ticket responded 200 in 164.5092 ms
+2025-02-14 16:47:23.035 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/api/v1/get-available-ticket - 200 null application/json; charset=utf-8 166.7228ms

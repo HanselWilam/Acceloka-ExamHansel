@@ -10,6 +10,5 @@ namespace HanselAcceloka.Models
     {
         public int BookedTicketId { get; set; }
         public DateTime BookingDate { get; set; }
-        public int UserId { get; set; }
     }
 }

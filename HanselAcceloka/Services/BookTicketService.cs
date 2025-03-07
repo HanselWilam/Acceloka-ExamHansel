@@ -17,11 +17,6 @@ namespace HanselAcceloka.Services
 
         public async Task<BookTicketResponse> BookTicketAsync(BookTicketRequest request)
         {
-            var userExists = await _context.Users.AnyAsync(u => u.user_id == request.UserId);
-            if (!userExists)
-            {
-                throw new KeyNotFoundException("User tidak ditemukan");
-            }
 
             var ticketCodes = request.Tickets.Select(t => t.TicketCode).ToList();
             var tickets = await _context.Tickets
@@ -52,7 +47,6 @@ namespace HanselAcceloka.Services
 
             var bookedTicket = new bookedticket
             {
-                user_id = request.UserId,
                 booked_at = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Unspecified)
             };
 
@@ -83,18 +77,18 @@ namespace HanselAcceloka.Services
             };
 
             response.TicketsPerCategories = tickets
-    .   GroupBy(t => t.category.category_name)
-    .   Select(g => new CategorySummary
-            {
-                CategoryName = g.Key,
-                SummaryPrice = g.Sum(t => t.price * request.Tickets.First(bt => bt.TicketCode == t.ticket_code).Quantity),
-                Tickets = g.Select(t => new TicketDetail
-                {
-                    TicketCode = t.ticket_code,
-                    TicketName = t.ticket_name,
-                    Price = t.price * request.Tickets.First(bt => bt.TicketCode == t.ticket_code).Quantity
-                }).ToList()
-            }).ToList();
+    .GroupBy(t => t.category.category_name)
+    .Select(g => new CategorySummary
+    {
+        CategoryName = g.Key,
+        SummaryPrice = g.Sum(t => t.price * request.Tickets.First(bt => bt.TicketCode == t.ticket_code).Quantity),
+        Tickets = g.Select(t => new TicketDetail
+        {
+            TicketCode = t.ticket_code,
+            TicketName = t.ticket_name,
+            Price = t.price * request.Tickets.First(bt => bt.TicketCode == t.ticket_code).Quantity
+        }).ToList()
+    }).ToList();
 
             return response;
         }

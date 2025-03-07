@@ -21,6 +21,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
+
 var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
@@ -37,18 +45,22 @@ builder.Services.AddDbContext<AccelokaContext>(options =>
 builder.Services.AddTransient<TicketService>();
 builder.Services.AddTransient<BookTicketService>();
 builder.Services.AddScoped<BookedTicketService>();
-builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = string.Empty; 
+    });
 }
 
 app.UseSerilogRequestLogging();
 
+app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();
 

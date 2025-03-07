@@ -1,0 +1,142 @@
+[
+  {
+    "ContainingType": "HanselAcceloka.Controllers.BookTicketController",
+    "Method": "BookTicket",
+    "RelativePath": "api/v1/book-ticket",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HanselAcceloka.Models.Requests.BookTicketRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HanselAcceloka.Controllers.BookedTicketController",
+    "Method": "EditBookedTicket",
+    "RelativePath": "api/v1/edit-booked-ticket/{bookedTicketId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookedTicketId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tickets",
+        "Type": "System.Collections.Generic.List\u00601[[HanselAcceloka.Models.EditBookedTicketModel, HanselAcceloka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HanselAcceloka.Controllers.TicketController",
+    "Method": "Get",
+    "RelativePath": "api/v1/get-available-ticket",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ticketCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ticketName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "categoryName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "maxPrice",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "orderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "orderState",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HanselAcceloka.Controllers.BookedTicketController",
+    "Method": "GetBookedTicket",
+    "RelativePath": "api/v1/get-booked-ticket/{bookedTicketId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookedTicketId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HanselAcceloka.Controllers.BookedTicketController",
+    "Method": "RevokeTicket",
+    "RelativePath": "api/v1/revoke-ticket/{bookedTicketId}/{kodeTicket}/{qty}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookedTicketId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "kodeTicket",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "qty",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

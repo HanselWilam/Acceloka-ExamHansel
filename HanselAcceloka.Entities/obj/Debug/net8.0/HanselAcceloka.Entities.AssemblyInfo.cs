@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HanselAcceloka.Entities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+220937a274301ab5fe27fa5bd7bda8c4005b7d30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d89912d13ea29eb46af8e25bc9aa6cb10f9bedae")]
 [assembly: System.Reflection.AssemblyProductAttribute("HanselAcceloka.Entities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HanselAcceloka.Entities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

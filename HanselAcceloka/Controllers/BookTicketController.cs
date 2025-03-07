@@ -4,15 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HanselAcceloka.Controllers
 {
-    [ApiController]
     [Route("api/v1/book-ticket")]
+    [ApiController]
     public class BookTicketController : ControllerBase
     {
         private readonly BookTicketService _bookTicketService;
-
         public BookTicketController(BookTicketService bookTicketService)
         {
-            _bookTicketService = bookTicketService;
+            _bookTicketService = bookTicketService ?? throw new ArgumentNullException(nameof(bookTicketService));
         }
 
         [HttpPost]
@@ -32,7 +31,6 @@ namespace HanselAcceloka.Controllers
                     status = 400,
                     detail = ex.Message
                 });
-
             }
         }
     }
