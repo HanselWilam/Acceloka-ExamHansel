@@ -1,9 +1,10 @@
 using HanselAcceloka.Entities;
-using HanselAcceloka.Services;
+using MediatR;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using Serilog.Events;
-using Serilog.AspNetCore;
+using System.Reflection;
+using FluentValidation.AspNetCore;
 
 var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "logs");
 if (!Directory.Exists(logDirectory))
@@ -15,7 +16,6 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.File($"logs/Log-{DateTime.UtcNow:yyyyMMdd}.txt")
     .CreateLogger();
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +31,9 @@ builder.Services.AddCors(options =>
 
 var configuration = builder.Configuration;
 
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -42,9 +45,7 @@ builder.Services.AddDbContext<AccelokaContext>(options =>
     options.UseNpgsql(conString);
 });
 
-builder.Services.AddTransient<TicketService>();
-builder.Services.AddTransient<BookTicketService>();
-builder.Services.AddScoped<BookedTicketService>();
+builder.Services.AddFluentValidationAutoValidation();
 
 var app = builder.Build();
 
@@ -54,7 +55,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        c.RoutePrefix = string.Empty; 
+        c.RoutePrefix = string.Empty;
     });
 }
 

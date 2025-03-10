@@ -1,4 +1,5 @@
-﻿using HanselAcceloka.Services;
+﻿using HanselAcceloka.Application.Tickets.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,38 +11,22 @@ namespace HanselAcceloka.Controllers
     [ApiController]
     public class TicketController : ControllerBase
     {
-        private readonly TicketService _service;
+        private readonly IMediator _mediator;
         private readonly ILogger<TicketController> _logger;
 
-        public TicketController(TicketService service, ILogger<TicketController> logger)
+        public TicketController(IMediator mediator, ILogger<TicketController> logger)
         {
-            _service = service;
+            _mediator = mediator;
             _logger = logger;
         }
 
         [HttpGet("get-available-ticket")]
-        public async Task<IActionResult> Get(
-            [FromQuery] string? ticketCode,
-            [FromQuery] string? ticketName,
-            [FromQuery] string? categoryName,
-            [FromQuery] int? maxPrice,
-            [FromQuery] DateTime? startDate,
-            [FromQuery] DateTime? endDate,
-            [FromQuery] string? orderBy = "ticket_code",
-            [FromQuery] string? orderState = "asc",
-            [FromQuery] int pageNumber = 1,
-            [FromQuery] int pageSize = 10)
+        public async Task<IActionResult> Get([FromQuery] GetAvailableTicketsQuery query)
         {
             try
             {
-                var result = await _service.Get(
-                    ticketCode, ticketName, categoryName, maxPrice, startDate, endDate, orderBy, orderState, pageNumber, pageSize);
-
-                return Ok(new
-                {
-                    tickets = result.Items,
-                    totalTickets = result.TotalCount
-                });
+                var result = await _mediator.Send(query);
+                return Ok(new { tickets = result.Items, totalTickets = result.TotalCount });
             }
             catch (ArgumentException ex)
             {

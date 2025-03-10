@@ -157,28 +157,28 @@
         ],
         "parameters": [
           {
-            "name": "ticketCode",
+            "name": "TicketCode",
             "in": "query",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "ticketName",
+            "name": "TicketName",
             "in": "query",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "categoryName",
+            "name": "CategoryName",
             "in": "query",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "maxPrice",
+            "name": "MaxPrice",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -186,7 +186,7 @@
             }
           },
           {
-            "name": "startDate",
+            "name": "StartDate",
             "in": "query",
             "schema": {
               "type": "string",
@@ -194,7 +194,7 @@
             }
           },
           {
-            "name": "endDate",
+            "name": "EndDate",
             "in": "query",
             "schema": {
               "type": "string",
@@ -202,37 +202,33 @@
             }
           },
           {
-            "name": "orderBy",
+            "name": "OrderBy",
             "in": "query",
             "schema": {
-              "type": "string",
-              "default": "ticket_code"
+              "type": "string"
             }
           },
           {
-            "name": "orderState",
+            "name": "OrderState",
             "in": "query",
             "schema": {
-              "type": "string",
-              "default": "asc"
+              "type": "string"
             }
           },
           {
-            "name": "pageNumber",
+            "name": "PageNumber",
             "in": "query",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "default": 1
+              "format": "int32"
             }
           },
           {
-            "name": "pageSize",
+            "name": "PageSize",
             "in": "query",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "default": 10
+              "format": "int32"
             }
           }
         ],

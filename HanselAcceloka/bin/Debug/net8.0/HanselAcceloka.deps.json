@@ -10,7 +10,7 @@
         "dependencies": {
           "FluentValidation.AspNetCore": "11.3.0",
           "HanselAcceloka.Entities": "1.0.0",
-          "MediatR": "12.4.1",
+          "MediatR": "12.1.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Serilog": "4.2.0",
           "Serilog.AspNetCore": "9.0.0",
@@ -54,7 +54,7 @@
           }
         }
       },
-      "MediatR/12.4.1": {
+      "MediatR/12.1.1": {
         "dependencies": {
           "MediatR.Contracts": "2.0.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0"
@@ -62,7 +62,7 @@
         "runtime": {
           "lib/net6.0/MediatR.dll": {
             "assemblyVersion": "12.0.0.0",
-            "fileVersion": "12.4.1.0"
+            "fileVersion": "12.1.1.0"
           }
         }
       },
@@ -76,7 +76,7 @@
       },
       "MediatR.Extensions.Microsoft.DependencyInjection/11.1.0": {
         "dependencies": {
-          "MediatR": "12.4.1",
+          "MediatR": "12.1.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0"
         },
         "runtime": {
@@ -538,12 +538,12 @@
       "path": "fluentvalidation.dependencyinjectionextensions/11.5.1",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512"
     },
-    "MediatR/12.4.1": {
+    "MediatR/12.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0tLxCgEC5+r1OCuumR3sWyiVa+BMv3AgiU4+pz8xqTc+2q1WbUEXFOr7Orm96oZ9r9FsldgUtWvB2o7b9jDOaw==",
-      "path": "mediatr/12.4.1",
-      "hashPath": "mediatr.12.4.1.nupkg.sha512"
+      "sha512": "sha512-1AbwzzeS6gn4NdcO6A9LfKS5TXXgAiUQM3J18dREHa7O7TrdCXJ5dNFeRBpzPZY7UWl5Kby+n9pWrPJe3SDiMA==",
+      "path": "mediatr/12.1.1",
+      "hashPath": "mediatr.12.1.1.nupkg.sha512"
     },
     "MediatR.Contracts/2.0.1": {
       "type": "package",

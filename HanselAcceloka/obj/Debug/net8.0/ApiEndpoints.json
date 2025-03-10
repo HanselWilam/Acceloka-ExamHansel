@@ -45,52 +45,52 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ticketCode",
+        "Name": "TicketCode",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "ticketName",
+        "Name": "TicketName",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "categoryName",
+        "Name": "CategoryName",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "maxPrice",
+        "Name": "MaxPrice",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
-        "Name": "startDate",
+        "Name": "StartDate",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
-        "Name": "endDate",
+        "Name": "EndDate",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
-        "Name": "orderBy",
+        "Name": "OrderBy",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "orderState",
+        "Name": "OrderState",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "pageNumber",
+        "Name": "PageNumber",
         "Type": "System.Int32",
         "IsRequired": false
       },
       {
-        "Name": "pageSize",
+        "Name": "PageSize",
         "Type": "System.Int32",
         "IsRequired": false
       }
