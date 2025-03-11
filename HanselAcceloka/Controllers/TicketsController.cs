@@ -1,55 +1,37 @@
-﻿using HanselAcceloka.Application.Tickets.Queries;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
+using HanselAcceloka.Application.Tickets.Queries;
+using HanselAcceloka.Application.Tickets.Validators;
 
-namespace HanselAcceloka.Controllers
+[ApiController]
+[Route("api/v1/get-available-ticket")]
+public class TicketsController : ControllerBase
 {
-    [Route("api/v1")]
-    [ApiController]
-    public class TicketController : ControllerBase
+    private readonly IMediator _mediator;
+
+    public TicketsController(IMediator mediator)
     {
-        private readonly IMediator _mediator;
-        private readonly ILogger<TicketController> _logger;
+        _mediator = mediator;
+    }
 
-        public TicketController(IMediator mediator, ILogger<TicketController> logger)
+    [HttpGet]
+    public async Task<IActionResult> GetAvailableTickets([FromQuery] GetAvailableTicketsQuery query)
+    {
+        var validator = new GetAvailableTicketsValidator();
+        var validationResult = await validator.ValidateAsync(query);
+
+        if (!validationResult.IsValid)
         {
-            _mediator = mediator;
-            _logger = logger;
+            return BadRequest(new ValidationProblemDetails
+            {
+                Title = "Invalid request parameters",
+                Status = StatusCodes.Status400BadRequest,
+                Detail = "One or more validation errors occurred.",
+                Errors = validationResult.Errors.ToDictionary(e => e.PropertyName, e => new[] { e.ErrorMessage })
+            });
         }
 
-        [HttpGet("get-available-ticket")]
-        public async Task<IActionResult> Get([FromQuery] GetAvailableTicketsQuery query)
-        {
-            try
-            {
-                var result = await _mediator.Send(query);
-                return Ok(new { tickets = result.Items, totalTickets = result.TotalCount });
-            }
-            catch (ArgumentException ex)
-            {
-                _logger.LogWarning(ex, "Invalid request parameters.");
-                return BadRequest(new ProblemDetails
-                {
-                    Title = "Invalid request",
-                    Status = 400,
-                    Detail = ex.Message,
-                    Type = "https://httpstatuses.com/400"
-                });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Unexpected error while fetching tickets.");
-                return StatusCode(500, new ProblemDetails
-                {
-                    Title = "Internal Server Error",
-                    Status = 500,
-                    Detail = "An unexpected error occurred while processing your request.",
-                    Type = "https://httpstatuses.com/500"
-                });
-            }
-        }
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 }

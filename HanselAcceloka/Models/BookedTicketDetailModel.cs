@@ -10,7 +10,7 @@ namespace HanselAcceloka.Models
     {
         public int BookedTicketDetailId { get; set; }
         public int BookedTicketId { get; set; }
-        public string TicketCode { get; set; }
+        public string? TicketCode { get; set; }
         public int Quantity { get; set; }
     }
 }

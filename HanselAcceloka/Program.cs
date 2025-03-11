@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
 using FluentValidation.AspNetCore;
+using HanselAcceloka.Services;
 
 var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "logs");
 if (!Directory.Exists(logDirectory))
@@ -31,9 +32,9 @@ builder.Services.AddCors(options =>
 
 var configuration = builder.Configuration;
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
+builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -45,7 +46,7 @@ builder.Services.AddDbContext<AccelokaContext>(options =>
     options.UseNpgsql(conString);
 });
 
-builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddScoped<BookedTicketService>();
 
 var app = builder.Build();
 
@@ -59,8 +60,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseRouting();
 app.UseSerilogRequestLogging();
-
 app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();

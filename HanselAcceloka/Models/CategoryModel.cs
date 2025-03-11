@@ -15,7 +15,7 @@ namespace HanselAcceloka.Models
 
         [Required]
         [MaxLength(50)]
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
 
         public ICollection<TicketModel> Tickets { get; set; } = new List<TicketModel>();
     }

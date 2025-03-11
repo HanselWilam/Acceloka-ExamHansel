@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "HanselAcceloka.Controllers.BookTicketController",
+    "ContainingType": "BookTicketController",
     "Method": "BookTicket",
     "RelativePath": "api/v1/book-ticket",
     "HttpMethod": "POST",
@@ -37,8 +37,8 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HanselAcceloka.Controllers.TicketController",
-    "Method": "Get",
+    "ContainingType": "TicketsController",
+    "Method": "GetAvailableTickets",
     "RelativePath": "api/v1/get-available-ticket",
     "HttpMethod": "GET",
     "IsController": true,
